@@ -1,10 +1,18 @@
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ConfigureStore } from './redux/ConfigureStore';
 import Main from './screens/main';
 
+const store = ConfigureStore();
 function App() {
   return (
-    <div className="App">
-      <Main />
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <div className="App">
+          <Main />
+        </div>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
