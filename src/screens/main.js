@@ -13,7 +13,7 @@ function Main() {
 
   //#region States and constants
   const [price, setPrice] = useState("");
-  const [color, setColor] = useState("Blue");
+  const [color, setColor] = useState("");
   const priceList = [
     "$1000-$2000",
     "$2000-$3000",
@@ -51,7 +51,7 @@ function Main() {
         options={colorList}
         value={color}
         title="What is your favourite color?"
-        palceHolder="Select colur"
+        palceHolder="Select color"
         onChange={(e) => { setColor(e.target.value); }} />
       <Button onClick={() => { handelResult() }}>Result</Button>
     </MyContainer>
