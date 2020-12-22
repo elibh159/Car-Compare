@@ -12,9 +12,9 @@ const index = ({
   <Container additioanlStyle={additioanlStyle}>
     <span>{title}</span>
     <select name={name} onChange={onChange} value={value}>
-      <option value="" disabled selected>{palceHolder}</option>
+      <option defaultValue="" disabled >{palceHolder}</option>
       {options.map((o) => (
-        <option value={o}>{o}</option>
+        <option key={o} value={o}>{o}</option>
       ))}
     </select>
   </Container>
