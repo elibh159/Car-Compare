@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from './styles';
 
 const Index = ({ children, additionalStyle, ...props }) => (
@@ -6,4 +5,5 @@ const Index = ({ children, additionalStyle, ...props }) => (
     {children}
   </Button>
 );
+
 export default Index;
