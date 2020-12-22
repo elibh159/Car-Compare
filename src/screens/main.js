@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Dropdwon from "../components/Dropdown/index";
 import Button from "../components/Button/index";
+import MyContainer from "../components/MyContainer/index";
+
 function Main() {
   const [price, setPrice] = useState("");
   const [color, setColor] = useState("");
@@ -22,7 +24,7 @@ function Main() {
   ];
 
   return (
-    <div>
+    <MyContainer>
       <h1>Car Selection Form</h1>
       <Dropdwon
         options={priceList}
@@ -37,7 +39,7 @@ function Main() {
         palceHolder="Select colur"
         onChange={(e) => { setColor(e.target.value); }} />
       <Button onClick={() => { }}>Result</Button>
-    </div>
+    </MyContainer>
   )
 }
 
