@@ -7,7 +7,6 @@ export const Container = styled.div`
   margin: 20px;
   flex: 1;
   position:relative;
-
    span { 
     font-size: 15px;
     white-space: nowrap;
