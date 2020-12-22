@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Dropdwon from "../components/Dropdown/index"
-
+import Dropdwon from "../components/Dropdown/index";
+import Button from "../components/Button/index";
 function Main() {
   const [price, setPrice] = useState("");
   const [color, setColor] = useState("");
@@ -36,6 +36,7 @@ function Main() {
         title="What is your favourite colour?"
         palceHolder="Select colur"
         onChange={(e) => { setColor(e.target.value); }} />
+      <Button onClick={() => { }}>Result</Button>
     </div>
   )
 }
