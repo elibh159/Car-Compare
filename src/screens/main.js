@@ -37,7 +37,6 @@ function Main() {
     dispatch(getPerfectCars(price, color, 6));
 
   }
-
   return (
     <MyContainer>
       <h1>Car Selection Form</h1>

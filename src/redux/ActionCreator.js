@@ -13,7 +13,22 @@ export const getPerfectCars = (PriceRange, Color, Count) => (dispatch) => {
       Accept: 'application/json',
     },
     credentials: 'same-origin'
-  }).then(response => dispatch(AddPerfectCars(response.data)))
+  }).then(response => {
+    debugger;
+    let TempPriceRange = PriceRange.split('-');
+    let minPrice = Number(TempPriceRange[0].replace('$', ''));
+    let maxPrice = Number(TempPriceRange[1].replace('$', ''));
+
+
+    const res = response.data.Cars;
+    let newList = res.map(({ price, ...rest }) => ({
+      price: Number(price.replace('$', '')),
+      ...rest,
+    }));
+    newList = newList.filter(m => m.price > minPrice && m.price < maxPrice);
+
+    dispatch(AddPerfectCars(newList))
+  })
     .catch(error => dispatch(PerfectCarsFailed(error.message)));
 
 }
