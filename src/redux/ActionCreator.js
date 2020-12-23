@@ -30,7 +30,8 @@ export const getPerfectCars = (PriceRange, Color, Availability, Count) => (dispa
         .slice(0, Count);
       dispatch(AddPerfectCars(newList));
       debugger;
-      dispatch(getRecommendCars(newList[0].car));
+      let brand = (newList.length > 0 ? newList[0].car : "Mitsubishi")
+      dispatch(getRecommendCars(brand));
     })
     .catch((error) => dispatch(PerfectCarsFailed(error.message)));
 };

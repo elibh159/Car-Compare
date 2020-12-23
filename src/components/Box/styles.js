@@ -12,7 +12,7 @@ export const Box = styled.div`
   margin:10px 50px ;
 
   ${props => props.prominent && css`
-    background: ${Colors.yellow};
+    background: ${Colors.lightBlue};
     color: ${Colors.blue};
     width: 44%;
     font-weight: bold;
