@@ -3,7 +3,7 @@ import * as ActionTypes from "./ActionTypes";
 import { baseUrl } from "../constants/appContact";
 
 //#region  Get Perfect Cars
-export const getPerfectCars = (PriceRange, Color, Count) => (dispatch) => {
+export const getPerfectCars = (PriceRange, Color, Availability, Count) => (dispatch) => {
   dispatch(PerfectCarsLoading());
   return axios
     .get(baseUrl + "cars/color/" + Color, {
@@ -25,7 +25,7 @@ export const getPerfectCars = (PriceRange, Color, Count) => (dispatch) => {
           price: Number(price.replace("$", "")),
           ...rest,
         }))
-        .filter((m) => m.price > minPrice && m.price < maxPrice)
+        .filter((m) => m.price > minPrice && m.price < maxPrice && m.availability === Availability)
         .sort(compareValues("car_model_year", "desc"))
         .slice(0, Count);
 

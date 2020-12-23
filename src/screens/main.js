@@ -46,7 +46,7 @@ function Main() {
       alert("What is your favourite color?")
       return;
     }
-    dispatch(getPerfectCars(price, color, 6));
+    dispatch(getPerfectCars(price, color, availability, 6));
   };
 
   return (
