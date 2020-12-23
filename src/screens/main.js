@@ -6,7 +6,7 @@ import Button from "../components/Button/index";
 import MyContainer from "../components/MyContainer/index";
 import Box from "../components/Box/index";
 import Checkbox from "../components/CheckBox/index";
-
+import { Div } from './styles';
 
 function Main() {
   //#region redux
@@ -20,6 +20,8 @@ function Main() {
   const [price, setPrice] = useState("");
   const [color, setColor] = useState("");
   const [availability, setAvailability] = useState(false);
+  const [showForm, setShowForm] = useState(true);
+
   const priceList = [
     "$1000-$2000",
     "$2000-$3000",
@@ -49,12 +51,12 @@ function Main() {
       return;
     }
     dispatch(getPerfectCars(price, color, availability, 6));
+    setShowForm(false);
   };
 
   return (
     <MyContainer>
-      <div>
-        {JSON.stringify(recommendCars)}
+      <Div hidden={!showForm}>
         <h1>Car Selection Form</h1>
         <Dropdwon
           options={priceList}
@@ -89,14 +91,14 @@ function Main() {
         >
           Result
         </Button>
-      </div>
-      <div>
-        <h2>Your perfect car collection</h2>
+      </Div>
+      <Div hidden={showForm}>
+        <h1>Your perfect car collection</h1>
         {perfectCars.cars &&
           perfectCars.cars.map((item) => (
             <Box
               key={item.id}
-              price={item.price}
+              price={'$' + item.price}
               name={item.car}
               model={item.car_model}
               color={item.car_color}
@@ -116,7 +118,7 @@ function Main() {
               ></Box>
             ))}
         </div>
-      </div>
+      </Div>
     </MyContainer>
   );
 }

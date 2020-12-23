@@ -16,7 +16,7 @@ const Index = ({ additionalStyle, name, price, model, color, prominent }) => (
     </Div>
     <Div>
       <Label>Car Price:</Label>
-      <Span>${price}</Span>
+      <Span>{price}</Span>
     </Div>
   </Box>
 );
