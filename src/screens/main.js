@@ -5,6 +5,9 @@ import Dropdwon from "../components/Dropdown/index";
 import Button from "../components/Button/index";
 import MyContainer from "../components/MyContainer/index";
 import Box from "../components/Box/index";
+import Checkbox from "../components/CheckBox/index";
+
+
 function Main() {
   //#region redux
   const perfectCars = useSelector((state) => state.perfectCars);
@@ -14,6 +17,7 @@ function Main() {
   //#region States and constants
   const [price, setPrice] = useState("");
   const [color, setColor] = useState("");
+  const [availability, setAvailability] = useState(false);
   const priceList = [
     "$1000-$2000",
     "$2000-$3000",
@@ -69,7 +73,12 @@ function Main() {
             setColor(e.target.value);
           }}
         />
-        checkBox
+        <Checkbox
+          checked={availability}
+          onChange={() => { setAvailability(!availability) }}
+          title="Availability">
+        </Checkbox>
+
         <Button
           onClick={() => {
             handelResult();

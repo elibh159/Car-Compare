@@ -8,7 +8,8 @@ export const Container = styled.div`
   flex: 1;
   position:relative;
    span { 
-    font-size: 15px;
+    font-size: 17px;
+    font-weight:bold;
     white-space: nowrap;
     margin-bottom: 10px;
     margin-top:15px;
@@ -18,7 +19,7 @@ export const Container = styled.div`
     height: 40px;
     background: transparent;
     color: ${Colors.black};
-    border: 1px solid ${Colors.grey};
+    border: 1px solid ${Colors.blue};
     font-size: 14px;
     position: relative;
   }
