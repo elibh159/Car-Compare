@@ -40,6 +40,7 @@ function Main() {
     "Crimson",
   ];
   //#endregion
+
   //#region Funcion
   const handelResult = () => {
     setErrMsg("");
@@ -112,6 +113,11 @@ function Main() {
           </p>
           <Button onClick={() => { newForm() }}>Back</Button>
         </Div>
+        <Div hidden={perfectCars.cars.length === 0}>
+          <Button secondary onClick={() => { newForm() }}>
+            Back to search
+          </Button>
+        </Div>
         {perfectCars.cars &&
           perfectCars.cars.map((item) => (
             <Box
@@ -124,6 +130,7 @@ function Main() {
           ))}
         <h1>What do you think about these cars!?</h1>
         <div>
+
           {recommendCars.cars &&
             recommendCars.cars.map((item) => (
               <Box

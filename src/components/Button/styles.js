@@ -16,7 +16,7 @@ export const Button = styled.button`
     if (props.hidden && css) res += `dispay:none;`;
 
     if (props.danger && css) res += `background:${Colors.red}`;
-    else if (props.secondary && css) res += `background:${Colors.grey}`;
+    else if (props.secondary && css) res += `background:${Colors.grey};color:${Colors.black};margin-top:-50px;float: right;`;
     else if (props.success && css) res += `background:${Colors.green}`;
     return res;
   }}
