@@ -39,7 +39,7 @@ function Main() {
     "Crimson",
   ];
   //#endregion
-
+  //#region Funcion
   const handelResult = () => {
     console.log("price:" + price + " color:" + color);
     if (!price) {
@@ -53,6 +53,13 @@ function Main() {
     dispatch(getPerfectCars(price, color, availability, 6));
     setShowForm(false);
   };
+
+  const newForm = () => {
+    setShowForm(true);
+    setColor("");
+    setPrice("");
+  }
+  //#endregion
 
   return (
     <MyContainer>
@@ -94,6 +101,12 @@ function Main() {
       </Div>
       <Div hidden={showForm}>
         <h1>Your perfect car collection</h1>
+        <Div danger hidden={perfectCars.cars.length > 0}>
+          <p>
+            Sorry, could not find a Car.
+          </p>
+          <Button onClick={() => { newForm() }}>Back</Button>
+        </Div>
         {perfectCars.cars &&
           perfectCars.cars.map((item) => (
             <Box
@@ -102,7 +115,7 @@ function Main() {
               name={item.car}
               model={item.car_model}
               color={item.car_color}
-            ></Box>
+            />
           ))}
         <h1>What do you think about these cars!?</h1>
         <div>
@@ -115,7 +128,7 @@ function Main() {
                 name={item.car}
                 model={item.car_model}
                 color={item.car_color}
-              ></Box>
+              />
             ))}
         </div>
       </Div>
