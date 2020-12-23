@@ -91,7 +91,7 @@ function Main() {
         </Button>
       </div>
       <div>
-        <h1>Your perfect car collection</h1>
+        <h2>Your perfect car collection</h2>
         {perfectCars.cars &&
           perfectCars.cars.map((item) => (
             <Box
@@ -102,6 +102,20 @@ function Main() {
               color={item.car_color}
             ></Box>
           ))}
+        <h1>What do you think about these cars!?</h1>
+        <div>
+          {recommendCars.cars &&
+            recommendCars.cars.map((item) => (
+              <Box
+                prominent
+                key={item.id}
+                price={item.price}
+                name={item.car}
+                model={item.car_model}
+                color={item.car_color}
+              ></Box>
+            ))}
+        </div>
       </div>
     </MyContainer>
   );

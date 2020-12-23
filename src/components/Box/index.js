@@ -1,7 +1,7 @@
 import { Box, Label, Span, Div } from "./styles";
 
-const Index = ({ additionalStyle, name, price, model, color }) => (
-  <Box additionalStyle={additionalStyle}>
+const Index = ({ additionalStyle, name, price, model, color, prominent }) => (
+  <Box additionalStyle={additionalStyle} prominent={prominent}>
     <Div>
       <Label>Car Name:</Label>
       <Span>{name}</Span>
