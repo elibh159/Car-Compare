@@ -11,6 +11,8 @@ import Checkbox from "../components/CheckBox/index";
 function Main() {
   //#region redux
   const perfectCars = useSelector((state) => state.perfectCars);
+  const recommendCars = useSelector((state) => state.recommendCars);
+
   const dispatch = useDispatch();
   //#endregion
 
@@ -52,6 +54,7 @@ function Main() {
   return (
     <MyContainer>
       <div>
+        {JSON.stringify(recommendCars)}
         <h1>Car Selection Form</h1>
         <Dropdwon
           options={priceList}

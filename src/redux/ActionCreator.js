@@ -28,8 +28,9 @@ export const getPerfectCars = (PriceRange, Color, Availability, Count) => (dispa
         .filter((m) => m.price > minPrice && m.price < maxPrice && m.availability === Availability)
         .sort(compareValues("car_model_year", "desc"))
         .slice(0, Count);
-
       dispatch(AddPerfectCars(newList));
+      debugger;
+      dispatch(getRecommendCars(newList[0].car));
     })
     .catch((error) => dispatch(PerfectCarsFailed(error.message)));
 };
@@ -47,6 +48,46 @@ export const PerfectCarsLoading = () => ({
 });
 
 //#endregion
+
+
+
+
+
+//#region  Get Recommended Cars
+export const getRecommendCars = (Brand = "Mitsubishi") => (dispatch) => {
+  debugger;
+  dispatch(RecommendCarsLoading());
+  return axios
+    .get(baseUrl + "cars/name/" + Brand, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      credentials: "same-origin",
+    })
+    .then((response) => {
+      const res = response.data.Cars;
+      dispatch(AddRecommendCars(res));
+    })
+    .catch((error) => dispatch(RecommendCarsFailed(error.message)));
+};
+export const RecommendCarsFailed = (errmess) => ({
+  type: ActionTypes.RecommendCars_FAILED,
+  payload: errmess,
+});
+
+export const AddRecommendCars = (setting) => ({
+  type: ActionTypes.ADD_RecommendCars,
+  payload: setting,
+});
+export const RecommendCarsLoading = () => ({
+  type: ActionTypes.RecommendCars_LOADING,
+});
+
+//#endregion
+
+
+
 
 //#region sort
 function compareValues(key, order = "asc") {
