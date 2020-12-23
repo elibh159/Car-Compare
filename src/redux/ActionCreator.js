@@ -66,7 +66,9 @@ export const getRecommendCars = (Brand = "Mitsubishi") => (dispatch) => {
       credentials: "same-origin",
     })
     .then((response) => {
-      const res = response.data.Cars;
+      const res = response.data.Cars
+        .sort(compareValues("car_model_year", "desc"))
+        .slice(0, 4);
       dispatch(AddRecommendCars(res));
     })
     .catch((error) => dispatch(RecommendCarsFailed(error.message)));
