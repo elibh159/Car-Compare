@@ -21,3 +21,9 @@ ${props => props.danger && css`
   transition: opacity 2s;
 `}
 `;
+
+export const PromBox = styled.div`
+  width:100%;
+  float: right;
+  display:block;
+`;

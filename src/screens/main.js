@@ -6,7 +6,7 @@ import Button from "../components/Button/index";
 import MyContainer from "../components/MyContainer/index";
 import Box from "../components/Box/index";
 import Checkbox from "../components/CheckBox/index";
-import { Div } from './styles';
+import { Div, PromBox } from './styles';
 
 function Main() {
   //#region redux
@@ -129,7 +129,7 @@ function Main() {
             />
           ))}
         <h1>What do you think about these cars!?</h1>
-        <div>
+        <PromBox>
 
           {recommendCars.cars &&
             recommendCars.cars.map((item) => (
@@ -142,7 +142,7 @@ function Main() {
                 color={item.car_color}
               />
             ))}
-        </div>
+        </PromBox>
       </Div>
     </MyContainer>
   );

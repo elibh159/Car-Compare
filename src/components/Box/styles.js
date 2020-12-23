@@ -10,21 +10,27 @@ export const Box = styled.div`
   background: ${Colors.blue};
   color: ${Colors.white};
   margin:10px 50px ;
-  ${({ additionalStyle }) => additionalStyle};
 
   ${props => props.prominent && css`
     background: ${Colors.yellow};
     color: ${Colors.blue};
-    width:50%;
-    display: flex;
-    border: 0;
-    padding: 11px 15px;
-    margin: 10px 20px;
-    width: 39%;
-    flex-direction: column;
-    flex-flow: wrap;
-    justify-content: space-between;
+    width: 44%;
     font-weight: bold;
+    float: right;
+    margin: 2%;
+    padding: 5px;
+    display:grid;
+
+    label{
+      color:${Colors.black};
+      padding-right:5px;
+    }
+    div{
+      padding: 10px 10px;
+    width:100%;
+    text-align:left;
+    flex-direction: unset;
+    }
   `}
 `;
 export const Div = styled.div`
@@ -33,14 +39,6 @@ export const Div = styled.div`
   display: flex;
   flex-direction: column;
   text-align:center;
-
-  ${props => props.prominent && css`
-  padding: 10px 10px;
-  width: 38%;
-  display: flex;
-  flex-direction: unset;
-  text-align: center;
-  `}
 `;
 
 export const Label = styled.label`

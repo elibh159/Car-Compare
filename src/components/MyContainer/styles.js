@@ -7,6 +7,6 @@ export const MyContainer = styled.div`
   background: ${Colors.white};
   margin: 25px auto;
   padding: 30px;
-
+  display:grid;
   ${({ additionalStyle }) => additionalStyle};
 `;
