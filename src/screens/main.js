@@ -34,7 +34,14 @@ function Main() {
 
   const handelResult = () => {
     console.log("price:" + price + " color:" + color);
-
+    if (!price) {
+      alert("What is the price range?")
+      return;
+    }
+    if (!color) {
+      alert("What is your favourite color?")
+      return;
+    }
     dispatch(getPerfectCars(price, color, 6));
   };
 
@@ -47,6 +54,7 @@ function Main() {
           value={price}
           title="What is the price range:"
           palceHolder="Select your option..."
+          required={true}
           onChange={(e) => {
             setPrice(e.target.value);
           }}
@@ -56,6 +64,7 @@ function Main() {
           value={color}
           title="What is your favourite color?"
           palceHolder="Select color..."
+          required={true}
           onChange={(e) => {
             setColor(e.target.value);
           }}
