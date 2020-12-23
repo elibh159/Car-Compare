@@ -21,6 +21,7 @@ function Main() {
   const [color, setColor] = useState("");
   const [availability, setAvailability] = useState(false);
   const [showForm, setShowForm] = useState(true);
+  const [errMsg, setErrMsg] = useState("");
 
   const priceList = [
     "$1000-$2000",
@@ -41,13 +42,13 @@ function Main() {
   //#endregion
   //#region Funcion
   const handelResult = () => {
-    console.log("price:" + price + " color:" + color);
+    setErrMsg("");
     if (!price) {
-      alert("What is the price range?")
+      setErrMsg("Ooops...! Please select your range of price ")
       return;
     }
     if (!color) {
-      alert("What is your favourite color?")
+      setErrMsg("Ooops...! Please select your favarite color")
       return;
     }
     dispatch(getPerfectCars(price, color, availability, 6));
@@ -65,6 +66,11 @@ function Main() {
     <MyContainer>
       <Div hidden={!showForm}>
         <h1>Car Selection Form</h1>
+        <Div danger hidden={errMsg === ""}>
+          <p>
+            {errMsg}
+          </p>
+        </Div>
         <Dropdwon
           options={priceList}
           value={price}
@@ -90,7 +96,6 @@ function Main() {
           onChange={() => { setAvailability(!availability) }}
           title="Availability">
         </Checkbox>
-
         <Button
           onClick={() => {
             handelResult();
