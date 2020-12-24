@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as ActionTypes from "./ActionTypes";
-import { baseUrl } from "../constants/appContact";
+import { baseUrl, recommandCount, resultCount } from "../constants/appContact";
 
 //#region  Get Perfect Cars
 export const getPerfectCars = (PriceRange, Color, Availability, Count) => (dispatch) => {
@@ -27,7 +27,7 @@ export const getPerfectCars = (PriceRange, Color, Availability, Count) => (dispa
         }))
         .filter((m) => m.price > minPrice && m.price < maxPrice && m.availability === Availability)
         .sort(compareValues("car_model_year", "desc"))
-        .slice(0, Count);
+        .slice(0, resultCount);
       dispatch(AddPerfectCars(newList));
       debugger;
       let brand = (newList.length > 0 ? newList[0].car : "Mitsubishi")
@@ -69,7 +69,7 @@ export const getRecommendCars = (Brand = "Mitsubishi") => (dispatch) => {
     .then((response) => {
       const res = response.data.Cars
         .sort(compareValues("car_model_year", "desc"))
-        .slice(0, 4);
+        .slice(0, recommandCount);
       dispatch(AddRecommendCars(res));
     })
     .catch((error) => dispatch(RecommendCarsFailed(error.message)));

@@ -52,7 +52,7 @@ function Main() {
       setErrMsg("Ooops...! Please select your favarite color")
       return;
     }
-    dispatch(getPerfectCars(price, color, availability, 6));
+    dispatch(getPerfectCars(price, color, availability));
     setShowForm(false);
   };
 
