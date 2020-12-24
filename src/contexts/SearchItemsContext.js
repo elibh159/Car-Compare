@@ -1,10 +1,11 @@
 import { createContext, useState } from 'react';
 export const SearchItemsContext = createContext(null);
 
-const SearchItemsProvider = (props) => {
+export const SearchItemsProvider = (props) => {
   const [searchItems, setSearchItems] = useState({
     color: "",
-    price: ""
+    price: "",
+    availability: false
   });
   return (
     <SearchItemsContext.Provider value={[searchItems, setSearchItems]}>
@@ -12,4 +13,3 @@ const SearchItemsProvider = (props) => {
     </SearchItemsContext.Provider>
   )
 }
-export default SearchItemsProvider;

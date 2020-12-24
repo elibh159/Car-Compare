@@ -1,8 +1,8 @@
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConfigureStore } from './redux/ConfigureStore';
-import ActivePageProvider from './contexts/ActivePageContext';
-import SearchItemsProvider from './contexts/SearchItemsProvider';
+import { ActivePageProvider } from './contexts/ActivePageContext';
+import { SearchItemsProvider } from './contexts/SearchItemsContext';
 import Main from './screens/main';
 
 const store = ConfigureStore();
