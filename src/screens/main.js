@@ -1,32 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { ActivePageContext } from "../contexts/ActivePageContext";
 import MyContainer from "../components/MyContainer/index";
+import Div from "../components/Div/index";
 import SearchForm from "../screens/searchform/index";
 import PerfectCollection from "../screens/perfectCollection/index";
 import RecommandCars from "../screens/recommandCars/index";
 
 function Main() {
-  //#region States and constants
-  const [showForm, setShowForm] = useState(true);
-  //#endregion
-
-  //#region Funcion
-  const newForm = () => {
-    setShowForm(true);
-    // setColor("");
-    //setPrice("");
-  }
-  //#endregion
+  const [activePage,] = useContext(ActivePageContext);
 
   return (
     <MyContainer>
-      {/* <Div hidden={!showForm}> */}
-      <SearchForm />
-
-      {/* </Div> */}
-      {/* <Div hidden={showForm}> */}
-      <PerfectCollection />
-      <RecommandCars />
-      {/* </Div> */}
+      <Div hidden={activePage === "Collection"}>
+        <SearchForm />
+      </Div>
+      <Div hidden={activePage === "SearchForm"}>
+        <PerfectCollection />
+        <RecommandCars />
+      </Div>
     </MyContainer>
   );
 }

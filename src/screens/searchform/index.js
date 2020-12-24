@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useDispatch } from "react-redux";
 import { getPerfectCars } from "../../redux/ActionCreator";
 import { SearchItemsContext } from "../../contexts/SearchItemsContext";
+import { ActivePageContext } from "../../contexts/ActivePageContext";
 import Div from "../../components/Div/index";
 import Dropdwon from "../../components/Dropdown";
 import Button from "../../components/Button";
@@ -14,7 +15,7 @@ const Index = () => {
 
   //#region States and constants
   const [model, setModel] = useContext(SearchItemsContext);
-  const [showForm, setShowForm] = useState(true);
+  const [, setActivePage] = useContext(ActivePageContext);
   const [errMsg, setErrMsg] = useState("");
 
   const priceList = [
@@ -59,7 +60,7 @@ const Index = () => {
       return;
     }
     dispatch(getPerfectCars(model.price, model.color, model.availability));
-    setShowForm(false);
+    setActivePage("Collection");
   };
   //#endregion
   return (
