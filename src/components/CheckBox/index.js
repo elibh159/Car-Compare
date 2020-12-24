@@ -7,9 +7,7 @@ const index = ({ onChange, checked, title, name }) => (
       <Input
         name={name}
         type="checkbox"
-        onChange={(event) => {
-          onChange(event.target.checked, event.target.name);
-        }}
+        onChange={onChange}
         checked={checked}
       />
       <CheckMark />
