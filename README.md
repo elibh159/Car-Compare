@@ -1,3 +1,50 @@
+# the scenario is:
+
+1-Imagine you are looking for a particular price range $2000-$3000 and blue colour.
+
+2-The result would be an array of different car makes that you are going to sort based on age and show the 6 newest cars.
+
+3-Pick the first car of the list and based on the make of the car, BMW, Fiat, Porsche, …, recommend 4 cars of the that make. So if the first car in the list is Honda, show 4 Honda cars.
+
+# Thinf to consider:
+
+1-For the price range, use a dropdown with four select option:
+$1000-$2000
+$2000-$3000
+$3000-$4000
+\$20000-22000
+
+2-For the color selector,use a dropdown with the following options:
+Blue
+Pink
+Green
+Khaki
+Indigo
+Puce
+Crimson
+
+3-The checkbox Availability should be default to false
+
+4-When hit "Result" button, the application will fetch the cars that matches the selected criteria and show in the next page
+
+5- on top of the result page,I may show only 6 of the cars that meet the criteria ordered by age of the car,show the newest 6 cars
+
+6- At the bottom of the page, show 4 recommanded cars based on the type of the first car.
+
+7-Both pages should be handled on 1 page and DON'T need to use react-router
+
+8- On each box,the following details should be shown:
+-Car name(BMW,Fiat,...)
+-Car model(330d,300E,...)
+-Car color(Blue,Red,...)
+
+9-If there is no result based on criteria,show an empty space saying that there is no result but still show the recommended 4 options based on the model of the car
+
+#Data Source
+For the data source,I use the following library:
+https://github.com/NerdyLuffy/myFakeApi
+When you run it locally,the api can be accessed on http://localhost:9000
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -13,58 +60,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
