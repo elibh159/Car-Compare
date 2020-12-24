@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useSelector } from "react-redux";
+import { SearchItemsContext } from "../../contexts/SearchItemsContext";
+import { ActivePageContext } from "../../contexts/ActivePageContext";
 import Div from "../../components/Div/index";
 import Button from "../../components/Button/index";
 import Box from "../../components/Box/index";
@@ -8,8 +10,15 @@ import { PromBox } from './styles';
 const Index = () => {
   const recommendCars = useSelector((state) => state.recommendCars);
 
+  const [, setModel] = useContext(SearchItemsContext);
+  const [, setActivePage] = useContext(ActivePageContext);
   const newForm = () => {
-    return true;
+    setActivePage("SearchForm");
+    setModel({
+      color: "",
+      price: "",
+      availability: false
+    });
   }
 
   return (

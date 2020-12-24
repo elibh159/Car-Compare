@@ -1,12 +1,22 @@
+import React, { useContext } from 'react';
 import { useSelector } from "react-redux";
+import { SearchItemsContext } from "../../contexts/SearchItemsContext";
+import { ActivePageContext } from "../../contexts/ActivePageContext";
 import Button from "../../components/Button/index";
 import Box from "../../components/Box/index";
 import Div from "../../components/Div/index";
 const Index = () => {
   const perfectCars = useSelector((state) => state.perfectCars);
 
+  const [, setModel] = useContext(SearchItemsContext);
+  const [, setActivePage] = useContext(ActivePageContext);
   const newForm = () => {
-    return true;
+    setActivePage("SearchForm");
+    setModel({
+      color: "",
+      price: "",
+      availability: false
+    });
   }
   return (
     <div>
