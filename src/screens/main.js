@@ -1,118 +1,58 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getPerfectCars } from "../redux/ActionCreator";
-import Dropdwon from "../components/Dropdown/index";
+import { useSelector } from "react-redux";
 import Button from "../components/Button/index";
 import MyContainer from "../components/MyContainer/index";
 import Box from "../components/Box/index";
-import Checkbox from "../components/CheckBox/index";
-import { Div, PromBox } from './styles';
-
+import Div from "../components/Div/index";
+import { PromBox } from './styles';
+import SearchForm from "../screens/searchform/index";
 function Main() {
   //#region redux
   const perfectCars = useSelector((state) => state.perfectCars);
   const recommendCars = useSelector((state) => state.recommendCars);
 
-  const dispatch = useDispatch();
   //#endregion
 
   //#region States and constants
-  const [price, setPrice] = useState("");
-  const [color, setColor] = useState("");
-  const [availability, setAvailability] = useState(false);
+
   const [showForm, setShowForm] = useState(true);
-  const [errMsg, setErrMsg] = useState("");
 
-  const priceList = [
-    "$1000-$2000",
-    "$2000-$3000",
-    "$3000-$4000",
-    "$20000-22000",
-  ];
 
-  const colorList = [
-    "Blue",
-    "Pink",
-    "Green",
-    "Khaki",
-    "Indigo",
-    "Puce",
-    "Crimson",
-  ];
+
   //#endregion
 
   //#region Funcion
-  const handelResult = () => {
-    setErrMsg("");
-    if (!price) {
-      setErrMsg("Ooops...! Please select your range of price ")
-      return;
-    }
-    if (!color) {
-      setErrMsg("Ooops...! Please select your favarite color")
-      return;
-    }
-    dispatch(getPerfectCars(price, color, availability));
-    setShowForm(false);
-  };
+
 
   const newForm = () => {
     setShowForm(true);
-    setColor("");
-    setPrice("");
+    // setColor("");
+    //setPrice("");
   }
   //#endregion
 
   return (
     <MyContainer>
       <Div hidden={!showForm}>
-        <h1>Car Selection Form</h1>
-        <Div danger hidden={errMsg === ""}>
-          <p>
-            {errMsg}
-          </p>
-        </Div>
-        <Dropdwon
-          options={priceList}
-          value={price}
-          title="What is the price range:"
-          palceHolder="Select your option..."
-          required={true}
-          onChange={(e) => {
-            setPrice(e.target.value);
-          }}
-        />
-        <Dropdwon
-          options={colorList}
-          value={color}
-          title="What is your favourite color?"
-          palceHolder="Select color..."
-          required={true}
-          onChange={(e) => {
-            setColor(e.target.value);
-          }}
-        />
-        <Checkbox
-          checked={availability}
-          onChange={() => { setAvailability(!availability) }}
-          title="Availability">
-        </Checkbox>
-        <Button
-          onClick={() => {
-            handelResult();
-          }}
-        >
-          Result
-        </Button>
+        <SearchForm />
+
       </Div>
       <Div hidden={showForm}>
         <h1>Your perfect car collection</h1>
-        <Div danger hidden={perfectCars.cars.length > 0}>
+
+        <Div danger hidden={perfectCars.cars.length > 0 || perfectCars.errMess !== null}>
           <p>
             Sorry, could not find a Car.
           </p>
           <Button onClick={() => { newForm() }}>Back</Button>
         </Div>
+        <Div danger hidden={perfectCars.errMess === null}>
+          <p>
+            Sorry, {perfectCars.errMess}.
+          </p>
+          <Button onClick={() => { newForm() }}>Back</Button>
+        </Div>
+
         <Div hidden={perfectCars.cars.length === 0}>
           <Button secondary onClick={() => { newForm() }}>
             Back to search
@@ -129,8 +69,15 @@ function Main() {
             />
           ))}
         <h1>What do you think about these cars!?</h1>
-        <PromBox>
 
+        <Div danger hidden={recommendCars.errMess === null}>
+          <p>
+            Sorry, {recommendCars.errMess}.
+          </p>
+          <Button onClick={() => { newForm() }}>Back</Button>
+        </Div>
+
+        <PromBox>
           {recommendCars.cars &&
             recommendCars.cars.map((item) => (
               <Box
